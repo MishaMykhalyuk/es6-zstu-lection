@@ -1,0 +1,749 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Shower Presentation Engine</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<link rel="stylesheet" href="highlight/styles/github.css">	
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Misha Mykhalyuk</h1>
+		<p>QAP, 2015</p>
+	</header>
+	<section class="slide cover" id="Cover">
+		<div>
+			<h2>ECMAScript 6</h2>
+			<img src="pictures/frontpage.jpg">
+			<!--
+				To apply styles to the certain slides
+				set slide ID to get needed elements
+				-->
+			<style>
+				#Cover h2 {
+					margin:30px 0 0;
+					color:#FFF;
+					text-align:center;
+					font-size:70px;
+					}
+				#Cover p {
+					margin:10px 0 0;
+					text-align:center;
+					color:#FFF;
+					font-style:italic;
+					font-size:20px;
+					}
+					#Cover p a {
+						color:#FFF;
+					}
+					.slide .mim-comment{
+						background: 0 0;
+						color: #999
+					}
+			</style>
+		</div>
+	</section>
+
+	<section class="slide" id="spec">
+		<div>
+			<h2>На всякий випадок</h2>
+			<ul>
+				<li><mark>ECMAScript</mark> — стандарт, який розвивається та підтримується асоціацією ECMA International.</li>
+				<li><mark>JavaScript</mark> — це реалізація специфікації ECMAScript.</li>
+			</ul>
+		</div>
+		<style>
+			#spec li:before{
+				opacity: 0;
+			}
+		</style>
+	</section>
+
+	<section class="slide cover">
+		<div>
+			<h2>Javascript раніше</h2>
+			<img src="pictures/old.jpg" alt="">
+		</div>
+	</section>
+
+	<section class="slide cover">
+		<div>
+			<h2>Javascript тепер</h2>
+			<img src="pictures/now.jpg" alt="">
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Еволюція JS</h2>
+			<ul>
+				<li>Перша версія - 1997р.</li>
+				<li><b>ES2</b> - 1998р.</li>
+				<li><b>ES3</b> - 1999р.</li>
+				<li><strike><b>ES4</b> - "Harmony"</strike></li>
+				<li><b>ES5</b> - грудень 2009р.</li>
+				<li><b>ES5.1</b> - 2011р.</li>
+				<li><b>ES6</b> ~ середина 2015р.</li>			
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide"><div>
+		<h2>Нові методи базових об'єктів</h2>
+		<ul>
+			<li>Object</li>
+			<li>Strings</li>
+			<li>Array</li>
+			<li>Number</li>
+			<li>Math</li>	
+		</ul>
+	</div>
+	</section>
+
+	<section class="slide" id="strings"><div>
+		<h2>Нові методи базових об'єктів</h2>
+		<p><b>String</b></p>
+
+		<code>'to much'.<mark>contains</mark>('to');<span class="mim-comment">// true</span></code>
+		<code>'to much'.<mark>startsWith</mark>('t');<span class="mim-comment">// true</span></code>
+		<code>'to much'.<mark>endsWith</mark>('t');<span class="mim-comment">// false</span></code>
+	</div>
+	<style>
+		#strings ul{
+			margin-left: 50px;
+		}
+		#strings ul li:before{
+			display: none;
+		}
+		#strings code{
+			margin-bottom: 30px;
+			display: block;
+			padding: 10px
+		}
+	</style>
+	</section>
+
+	<section class="slide" id="str-int">
+		<div>
+			<h2>String interpolation</h2>
+			<pre>
+				<code>var name = 'world',</code>
+				<code>    greeting = <mark>`</mark>Hello <mark>${name}`</mark>;</code>
+				<code>greeting <mark class="comment">// Hello world</mark></code>
+			</pre>
+			<code>`1 + 1 = ${1 + 1}`<mark class="mim-comment">// 1 + 1 = 2</mark></code>
+		</div>
+		<style>
+			#str-int p{
+				margin-bottom: 10px;
+			}
+			#str-int pre{
+				margin-bottom: 20px
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="objects"><div>
+		<h2>Нові методи базових об'єктів</h2>
+		<p><b>Object</b></p>
+
+		<code>Object.<mark>is</mark>(NaN, NaN)<span class="mim-comment">// true</span></code>
+		<code>Object.<mark>assign</mark>({a: 1, b:2}, {c: 3});<br><span class="mim-comment">// { a: 1, b: 2, c: 3 }</span></code>
+	</div>
+	<style>
+		#objects ul{
+			margin-left: 50px;
+		}
+		#objects ul li:before{
+			display: none;
+		}
+		#objects code{
+			margin-bottom: 30px;
+			display: block;
+			padding: 10px;
+		}
+		#objects .mim-comment{
+			line-height: 40px;
+		}
+	</style>
+	</section>
+
+	<section class="slide" id="array">
+		<div>
+			<h2>Нові методи базових об'єктів</h2>
+			<p><b>Array</b></p>
+			<pre>
+				<code>[1, 15, 7].<mark>find</mark>(function(num) {</code>
+				<code>	return num / 3 === 5;</code>
+				<code>});<mark class="comment">// 15</mark></code>
+			</pre>
+
+			<pre>
+				<code>[1, 15, 7].<mark>findIndex</mark>(function(num) {</code>
+				<code>	return num / 3 === 5;</code>
+				<code>});<mark class="comment">// 1</mark></code>
+			</pre>
+		</div>
+		<style>
+			#array p{
+				margin-bottom: 20px;
+			}
+			#array pre{
+				margin-bottom: 30px;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="forOf">
+		<div>
+			<h2>For of</h2>	
+			<pre>
+				<code>let arr = [ "blue", "green" ];</code>
+				<code>Array.prototype.protoProp = 456;</code>
+				<code><mark class="comment">// ES 5:</mark></code>
+				<code><mark>for</mark>(var x <mark>in</mark> arr) {</code>
+				<code> console.log(x); <mark class="comment">// 0, 1, protoProp</mark></code>
+				<code>}</code>
+				<code><mark class="comment">// ES 6:</mark></code>
+				<code><mark>for</mark>(var x <mark>of</mark> arr) {</code>
+				<code>	console.log(x); <mark class="comment">// тільки blue, green</mark></code>
+				<code>}</code>
+			</pre>
+		</div>
+		<style>
+			#forOf h2{
+				margin-bottom: 25px;
+			}
+			#forOf code{
+				line-height: 45px;
+			}
+		</style>
+	</section>
+
+	<section class="slide cover" id="scope">
+		<div>
+			<h2 class="white">Область видимості</h2>
+			<img src="pictures/scope.jpg" alt="">
+		</div>
+		<style>
+			h2.white{
+				color: #fff;
+			}
+			#scope img{
+				width: 100%
+			}
+		</style>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Block scope</h2>
+			<p><b>let</b></p>
+			<pre>
+				<code>for(var i = 0; i < 10; i++){ }</code>
+				<code>console.log(i); <mark class="comment">// 10</mark></code>
+			</pre>
+
+			<pre>
+				<code>for(<mark>let</mark> i = 0; i < 10; i++){ }</code>
+				<code>console.log(i); <mark class="comment">// ReferenceError: i is not defined</mark></code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Block scope</h2>
+			<p><b>const</b></p>
+			<pre>
+				<code><mark>const</mark> a = 10;</code>
+				<code>a = 15; <mark class="comment">// TypeError</mark></code>
+				<code>var a = 15; <mark class="comment">// TypeError</mark></code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide cover">
+		<div>
+			<h2 class="white">Колекції</h2>
+			<img src="pictures/collections.jpg">
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Колекції</h2>
+			<p class="mb"><b>Map</b></p>
+			<pre>
+				<code>let data = new <mark>Map()</mark>;</code>
+				<code>data.<mark>set</mark>('key', 100);</code>
+				<code>data.<mark>set</mark>(666, true);</code>
+				<code>data.<mark>set</mark>(undefined, 'some text');</code><br>
+				<code>let fn = function() { console.log('inside?'); }</code>
+				<code>data.<mark>set</mark>(fn, 'function key');</code>
+			</pre>
+		</div>
+		<style>
+			p.mb{
+				margin-bottom: 20px;
+			}
+		</style>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Колекції</h2>
+			<p class="mb"><b>Map</b></p>
+			<pre>
+				<code>data.<mark>has</mark>('key');<mark class="comment"> // false</mark></code>
+				<code>data.<mark>has</mark>(undefined);<mark class="comment"> // true</mark></code>
+				<code>data.<mark>delete</mark>(undefined);</code>
+				<code>data.<mark>size</mark>;</code>
+				<code>data.<mark>clear()</mark>;<mark class="comment"> // {}</mark></code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Колекції</h2>
+			<p class="mb"><b>Set</b></p>
+			<pre>
+				<code>var items = new <mark>Set()</mark>;</code>
+				<code>items.<mark>add</mark>(5);</code>
+				<code>items.<mark>add</mark>("5");</code>
+				<code>console.log(items.<mark>size</mark>); <mark class="comment">// 2</mark></code>
+				<code>items.<mark>add</mark>(5); <mark class="comment">// oops, duplicate - this is ignored</mark></code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Колекції</h2>
+			<p class="mb"><b>Set</b></p>
+			<pre>
+				<code>var items = new Set([1, 2, 3, 4, 5, 5, 5, 5]);</code>
+				<code>items.<mark>size</mark><mark class="comment"> // 5</mark></code>
+				<code>items.<mark>has</mark>(5)<mark class="comment"> // true</mark></code>
+				<code>items.<mark>has</mark>(6)<mark class="comment"> // false</mark></code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide cover">
+		<div>
+			<h2 class="white">Дивні конструкції</h2>
+			<img src="pictures/destructure.jpg">
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Array Destructuring</h2>
+			<pre>
+				<code>var foo = ["one", "two", "three"];</code>
+				<code><mark class="comment">// ES 5:</mark></code>
+				<code>var one   = foo[0];</code>
+				<code>var two   = foo[1];</code>
+				<code>var three = foo[2];</code>
+				<code><mark class="comment">// ES 6:</mark></code>
+				<code>var [one, two, three] = foo;</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Array Destructuring</h2>
+			<pre>
+				<code>var a = 1;</code>
+				<code>var b = 3;</code>
+				<code>[a, b] = [b, a];</code>
+			</pre>
+			<code>var [head, <mark>...</mark>tail] = [1, 2, 3, 4];</code>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Spread operator</h2>
+			<pre>
+				<code>let params = [2013, 9, 13, 15, 30];</code>
+				<code>let date = new Date(...params);</code>
+				<code><mark class="comment"> // Sun Oct 13 2013 15:30:00 GMT+0300</mark></code>
+			</pre>
+			<pre class="next">
+				<code>let speak = ['#404fest', '#dconf'];</code>
+				<code>let tags = ['#fronteers13', ...speak, '#wstdays'];</code>
+				<code><mark class="comment">// ["#fronteers13", "#404fest", "#dconf", "#wstdays"]</mark></code>
+			</pre>	
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Object Destructuring</h2>
+			<pre>
+				<code>let hero = {</code>
+				<code>	name: "Spider-Man",</code>
+				<code>	alterEgo: "Peter Benjamin Parker",</code>
+				<code>	enemies: ["Electro", "Doctor Octopus"]</code>
+				<code>};</code>
+				<code>let {name, alterEgo} = hero;</code>
+				<code><mark class="comment">// name = "Spider-Man"</mark></code>
+				<code><mark class="comment">// alterEgo = "Peter Benjamin Parker"</mark></code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide" id="destrObj">
+		<div>
+			<h2>Object Destructuring</h2>
+			<p>Деструктиризація при присвоюванні:</p>
+			<code>let {parse, stringify} = JSON;</code><br><br>
+			
+			<code>let {first: f, last: l} = {first: 'Jane', last: 'Doe'};</code>
+		</div>
+		<style>
+			#destrObj p,
+			#destrObj pre{
+				margin-bottom: 15px;
+			}
+			#destrObj code{
+				white-space: nowrap;
+			}
+		</style>
+	</section>
+
+	<section class="slide cover">
+		<div>
+			<h2 class="white">Функції</h2>
+			<img src="pictures/functions.jpg">
+		</div>
+	</section>
+
+	<section class="slide" id="default">
+		<div>
+			<h2>Default Parameters</h2>
+			<p><b>ES 5:</b></p>
+			<pre>
+				<code>function request(url, time, cb) {</code>
+				<code>	time = time || 2000;</code>
+				<code>	cb = cb || function() {};</code>
+				<code>}</code>
+			</pre>	
+			<p><b>ES 6</b></p>
+			<pre>
+				<code>function request(url, <mark>time = 2000</mark>, <mark>cb = function() {}</mark>) {}</code>
+			</pre>
+		</div>
+		<style>
+			#default p,
+			#default pre{
+				margin-bottom: 7px;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="rest">
+		<div>
+			<h2>Rest parameter</h2>
+			<p><b>ES 5:</b></p>
+			<pre>
+				<code>function f(a, b){</code>
+				<code> var args = Array.prototype.slice.call(arguments, f.length);</code>
+				<code>}</code>
+			</pre>
+			<p><b>ES 6:</b></p>
+			<code>function f(a, b, ...args) {}</code>
+		</div>
+		<style>
+			#rest p,
+			#rest pre{
+				margin-bottom: 0;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="arrowFunc">
+		<div>
+			<h2>Arrow functions</h2>
+			<h3><b>ES 5:</b></h3>
+			<pre>
+				<code>[0,1,2].map(function (x) { </code>
+				<code>	return x * x;</code>
+				<code>});</code>
+			</pre>	
+
+			<h3><b>ES 6:</b></h3>
+			<pre>
+				<code>[0,1,2].map(x => x * x); </code>
+			</pre>
+		</div>
+		<style>
+			#arrowFunc h2,
+			#arrowFunc pre{
+				margin-bottom: 15px;
+			}
+		</style>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Arrow functions</h2>
+			<h3><b>ES 5:</b></h3>
+			<pre>
+				<code>function Person() {</code>
+				<code>	var self = this;</code>
+				<code>	self.age = 0;</code>
+				<code>	setInterval(function growUp() {</code>
+				<code>		self.age++;</code>
+				<code>	}, 1000);</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Arrow functions</h2>
+			<h3><b>ES 6:</b></h3>
+			<pre>
+				<code>function Person() {</code>
+				<code>	this.age = 0;</code>
+				<code>	setInterval(() => {</code>
+				<code>		this.age++;</code>
+				<code>	}, 1000);</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide cover">
+		<div>
+			<h2 class="white">Генератори</h2>
+			<img src="pictures/generators.jpg">
+		</div>
+	</section>
+
+	<section class="slide" id="generator">
+		<div>
+			<h2>Generators *</h2>
+			<pre>
+				<code>function<mark>*</mark> compute(degree, max) {</code>
+				<code>	var a = 1;</code>
+				<code>	for (let i = 0; i < max; i++) {</code>
+				<code>		<mark>yield</mark> a;</code>
+				<code>		a = a * degree;</code>
+				<code>	}</code>
+				<code>}</code>
+				<code>let gen = compute(2, 3);</code>
+				<code class="next">gen.next(); <mark class="comment">// { value: 1, done: false }</mark></code>
+				<code class="next">gen.next(); <mark class="comment">// { value: 2, done: false }</mark></code>
+				<code class="next">gen.next(); <mark class="comment">// { value: 4, done: false }</mark></code>
+				<code class="next">gen.next(); <mark class="comment">// { value: undefined, done: true }</mark></code>
+			</pre>
+		</div>
+		<style>
+			#generator h2{
+				margin-bottom: 25px;
+			}
+			#generator code{
+				line-height: 37px;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="generator2">
+		<div>
+			<h2>Generators *</h2>
+			<pre>
+				<code>function* seq(a) {</code>	
+				<code>	yield a + 5;</code>	
+				<code>	let b = yield null;</code>	
+				<code>	return a + b;</code>	
+				<code>}</code>	
+				<code>let gen = seq(5);</code>	
+				<code class="next">gen.next().value; <mark class="comment">// 10</mark></code>	
+				<code class="next">gen.next().value; <mark class="comment">// null</mark></code>	
+				<code class="next">gen.next(8).value; <mark class="comment">// 13</mark></code>	
+			</pre>
+		</div>
+		<style>
+			#generator2 code{
+				line-height: 45px;
+			}
+		</style>
+	</section>
+
+	<section class="slide cover">
+		<div>
+			<h2 class="white">Класи</h2>
+			<img src="pictures/classes.jpg">
+		</div>
+	</section>
+
+	<!-- <section class="slide class1" id="classEs5">
+		<div>
+			<h2>Імітація класів в ES 5</h2>
+			<pre>
+				<code>function Person(name) {</code>
+				<code>	this.name = name;</code>
+				<code>}</code>
+				<code>Person.prototype.describe = function () {</code>
+				<code>	return "Person called " + this.name;</code>
+				<code>}</code>
+				<code>function Employee(name, title) {</code>
+				<code>	Person.call(this, name);</code>
+				<code>	this.title = title;</code>
+				<code>}</code>
+				<code>Employee.prototype = Object.create(Person.prototype);</code>
+				<code>Employee.prototype.constructor = Employee;</code>
+				<code>Employee.prototype.describe = function () {</code>
+				<code>  return Person.prototype.describe.call(this) + "(" + this.title + ")";</code>
+				<code>};</code>
+			</pre>
+		</div>
+		<style>
+			#classEs5 h2{
+				margin-bottom: 12px;
+			}
+			#classEs5 code{
+				line-height: 31px;
+			}
+		</style>
+	</section> -->
+
+	<section class="slide" id="classEs6">
+		<div>
+			<h2>Класи в ES 6</h2>
+			<pre>
+				<code><mark>class</mark> Person {</code>
+				<code>	<mark>constructor</mark>(name) {</code>
+				<code>		this.name = name;</code>
+				<code>	}</code>
+				<code>	describe() {</code>
+				<code>		return "Person called " + this.name;</code>
+				<code>	}</code>
+				<code>}</code>
+				<code><mark>class</mark> Employee <mark>extends</mark> Person {</code>
+				<code>	constructor(name, title) {</code>
+				<code>		<mark>super</mark>.constructor(name);</code>
+				<code>		this.title = title;</code>
+				<code>	}</code>
+				<code>	describe() {</code>
+				<code>		return super.describe() + " (" + this.title + ")";</code>
+				<code>	}</code>
+				<code>}</code>
+			</pre>
+		</div>
+		<style>
+			#classEs6 h2{
+				margin-bottom: 12px;
+			}
+			#classEs6 code{
+				line-height: 27px;
+				font-size: 20px;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="moduleInfo">
+		<div>
+			<h2>Modules</h2>
+			<h3>CommonJS (CJS)</h3>
+			<ul>
+				<li>призначений для синхронної загрузки;</li>
+				<li>переважно використовується на стороні сервера;</li>
+			</ul>
+			<h3>Asynchronous Module Definition (AMD)</h3>
+			<ul>
+				<li>призначений для асинхронної загрузки;</li>
+				<li>переважно використовується на стороні клієнта;</li>
+			</ul>
+		</div>
+		<style>
+			#moduleInfo ul{
+				margin-left: 50px;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="modules">
+		<div>
+			<h2>Modules</h2>
+			<pre>
+				<code><mark class="comment">// utility.js</mark></code>
+				<code>function generateRandom() {</code>
+				<code>	return Math.random();</code>
+				<code>}</code>
+				<code>function sum(a, b) {</code>
+				<code>	return a + b;</code>
+				<code>}</code>
+				<code><mark>export</mark> { generateRandom, sum }</code>
+				<code class="next"><mark>export</mark> {generateRandom <mark>as</mark> random, sum <mark>as</mark> doSum}</code>
+			</pre>
+		</div>
+		<style>
+			#modules code{
+				line-height: 44px;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="modules2">
+		<div>
+			<h2>Modules</h2>
+			<pre>
+				<code><mark class="comment">// app.js</mark></code>
+				<code><mark>import</mark> { generateRandom, sum } <mark>from</mark> 'utility';</code>
+				<code>generateRandom()<mark class="comment"> // random number</mark></code>
+				<code>sum(1, 2)<mark class="comment"> // 3</mark></code>
+			</pre>
+		</div>
+		<style>
+			#modules2 code{
+				line-height: 44px;
+			}
+		</style>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Як використовувати</h2>
+			<a href="http://kangax.github.io/compat-table/es6/" target="self">http://kangax.github.io/compat-table/es6/</a>
+			<a href="https://github.com/google/traceur-compiler" target="self">https://github.com/google/traceur-compiler</a>
+			<a href="https://leanpub.com/understandinges6/read" target="self">https://leanpub.com/understandinges6/read</a>
+			<a href="https://github.com/lukehoban/es6features" target="self">https://github.com/lukehoban/es6features</a>
+		</div>
+		<style>
+			#modules2 code{
+				line-height: 44px;
+			}
+		</style>
+	</section>
+
+
+	<section class="slide" id="questions">
+		<h1>Запитання</h1>
+		<style>
+			#questions h1{
+				margin: 220px 0 0 340px;
+				font-size: 70px;
+			}
+		</style>
+	</section>
+	
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2014 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>
