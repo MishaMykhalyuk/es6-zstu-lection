@@ -27,21 +27,25 @@
 					color:#FFF;
 					text-align:center;
 					font-size:70px;
-					}
+				}
 				#Cover p {
 					margin:10px 0 0;
 					text-align:center;
 					color:#FFF;
 					font-style:italic;
 					font-size:20px;
-					}
+				}
 					#Cover p a {
 						color:#FFF;
 					}
 					.slide .mim-comment{
 						background: 0 0;
 						color: #999
-					}
+				}
+				.slide .normalize-pre{
+					margin-bottom: 20px;
+				}
+
 			</style>
 		</div>
 	</section>
@@ -90,16 +94,43 @@
 		</div>
 	</section>
 
-	<section class="slide"><div>
-		<h2>Нові методи базових об'єктів</h2>
-		<ul>
-			<li>Object</li>
-			<li>Strings</li>
-			<li>Array</li>
-			<li>Number</li>
-			<li>Math</li>	
-		</ul>
-	</div>
+	<section class="slide shout" id="9">
+		<div>
+			<h2>Що нового?</h2>
+		</div>
+	</section>
+
+<!-- 	<section class="slide">
+		<div>
+			<h2>Нові методи базових об'єктів</h2>
+			<ul>
+				<li>Object</li>
+				<li>Strings</li>
+				<li>Array</li>
+				<li>Number</li>
+				<li>Math</li>	
+			</ul>
+		</div>
+	</section> -->
+
+	<section class="slide" id="str-int">
+		<div>
+			<h2>String interpolation</h2>
+			<pre>
+				<code>var name = 'world',</code>
+				<code>    greeting = <mark>`</mark>Hello <mark>${name}`</mark>;</code>
+				<code>greeting <mark class="comment">// Hello world</mark></code>
+			</pre>
+			<code>`1 + 1 = ${1 + 1}`<mark class="mim-comment">// 1 + 1 = 2</mark></code>
+		</div>
+		<style>
+			#str-int p{
+				margin-bottom: 10px;
+			}
+			#str-int pre{
+				margin-bottom: 20px
+			}
+		</style>
 	</section>
 
 	<section class="slide" id="strings"><div>
@@ -123,26 +154,6 @@
 			padding: 10px
 		}
 	</style>
-	</section>
-
-	<section class="slide" id="str-int">
-		<div>
-			<h2>String interpolation</h2>
-			<pre>
-				<code>var name = 'world',</code>
-				<code>    greeting = <mark>`</mark>Hello <mark>${name}`</mark>;</code>
-				<code>greeting <mark class="comment">// Hello world</mark></code>
-			</pre>
-			<code>`1 + 1 = ${1 + 1}`<mark class="mim-comment">// 1 + 1 = 2</mark></code>
-		</div>
-		<style>
-			#str-int p{
-				margin-bottom: 10px;
-			}
-			#str-int pre{
-				margin-bottom: 20px
-			}
-		</style>
 	</section>
 
 	<section class="slide" id="objects"><div>
@@ -196,7 +207,85 @@
 		</style>
 	</section>
 
-	<section class="slide" id="forOf">
+	<section class="slide shout">
+		<div>
+			<h2>For-of</h2>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>For-of</h2>
+			<b>Як 20 років назад...</b>
+			<pre class="normalize-pre">				
+				<code class="language-javascript">for (var index = 0; index &lt; myArray.length; index++) {</code>
+				<code>	console.log(myArray[index]);</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>For-of</h2>
+			<b>Як в ES5</b>
+			<pre>				
+				<code class="language-javascript">myArray.forEach(function (value) {</code>
+				<code>	console.log(value);</code>
+				<code>});</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>For-of</h2>
+			<b>А як на рахунок For-in?</b>
+			<pre class="normalize-pre">				
+				<code class="language-javascript">for (var index in myArray) {</code>
+				<code>	console.log(myArray[index]);</code>
+				<code>}</code>
+			</pre>
+			<ul class="next">але так робити не варто...
+				<li class="next">рядкова арифметика (index - рядок)</li>
+				<li class="next">ймовірність проходу лишній раз по елементам</li>
+				<li class="next">прохід у випадковому порядку! О_о</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>For-of</h2>
+			<b>Нас врятує!</b>
+			<pre class="normalize-pre">				
+				<code class="language-javascript">for (var index of myArray) {</code>
+				<code>	console.log(myArray[index]);</code>
+				<code>}</code>
+			</pre>
+			<ul class="next"> Виглядає непогано
+				<li>лаконичній та наглядний синтаксис</li>
+				<li>відсутні недоліки for-in</li>
+				<li>на відміну від forEach(), працює із break, continue та return</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>For-of</h2>
+			<b>Підсумок</b>
+			<ul>
+				<li class="next"><mark>for-in</mark> потрібний для перебору властивостей об'єкта.</li>
+				<li class="next"><mark>for-of</mark> потрібний для перебору даних, наприклад, значень масива</li>
+				<li class="next">for-of також добре працює із більшістю масивоподібних об'єктів, таких як NodeList в DOM</li>
+				<li class="next">працює із Map та Set</li>
+				<li class="next">працює із рядками, розглядаючи рядок як набір символів Unicode</li>
+			</ul>
+		</div>
+	</section>
+
+<!-- 	<section class="slide" id="forOf">
 		<div>
 			<h2>For of</h2>	
 			<pre>
@@ -220,7 +309,7 @@
 				line-height: 45px;
 			}
 		</style>
-	</section>
+	</section> -->
 
 	<section class="slide cover" id="scope">
 		<div>
