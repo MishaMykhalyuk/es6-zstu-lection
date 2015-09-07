@@ -89,7 +89,7 @@
 				<li><strike><b>ES4</b> - "Harmony"</strike></li>
 				<li><b>ES5</b> - грудень 2009р.</li>
 				<li><b>ES5.1</b> - 2011р.</li>
-				<li><b>ES6</b> ~ середина 2015р.</li>			
+				<li><b>ES6</b> ~ 17 червня 2015р.</li>			
 			</ul>
 		</div>
 	</section>
@@ -675,6 +675,89 @@
 		</div>
 	</section>
 
+		<section class="slide" id="53">
+		<div>
+			<h2>Класи</h2>
+			<pre>				<code class="language-javascript">class Animal {</code>
+				<code>	constructor() {</code>
+				<code>		this.speed = 0;</code>
+				<code>	}</code>
+				<code>toString() {</code>
+				<code>	return this.speed === 0 ? ' sleep' : ' play' }</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide" id="54">
+		<div>
+			<h2>Класи</h2>
+			<b>extends</b>
+			<pre>				<code class="language-javascript">class Cat extends Animal {</code>
+				<code>	constructor() {</code>
+				<code>		<mark>super();</mark></code>
+				<code>		this.speed = 10;</code>
+				<code>	}</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide" id="55">
+		<div>
+			<h2>Класи</h2>
+			<pre>				<code class="language-javascript">let dog = new Animal();</code>
+				<code>let cat = new Cat();</code>
+				<code>console.log(dog.toString());	// sleep</code>
+				<code>console.log(cat.toString());	// play</code>
+				<code>console.log(cat instanceof Animal);	// true</code>
+				<code>console.log(cat instanceof Cat);	// true</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide" id="56">
+		<div>
+			<h2>Класи</h2>
+			<b>static</b>
+			<pre>				<code class="language-javascript">class Util {</code>
+				<code>	<mark>static</mark> inc(x) {return x + 1},</code>
+				<code>	<mark>static</mark> dec(x) {return x - 1}</code>
+				<code>}</code>
+				<code>console.log(Util.inc(5));	// 6</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide" id="57">
+		<div>
+			<h2>Класи</h2>
+			<b>get/set</b>
+			<pre>				<code class="language-javascript">class O {</code>
+				<code>	constructor() {</code>
+				<code>		this.mx = 'initial';</code>
+				<code>	}</code>
+				<code><mark>get</mark> x() { return this.mx; }</code>
+				<code><mark>set</mark> x(val) { this.mx = val; }</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide" id="58">
+		<div>
+			<h2>Класи</h2>
+			<b>"поднятие"</b>
+			<pre>				<code class="language-javascript">var a = new ClassA(2);	<mark>// ReferenceError</mark></code>
+				<code>class ClassA {</code>
+				<code>	constructor(n) {</code>
+				<code>		this.x = n;</code>
+				<code>	}</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
 	<!-- <section class="slide class1" id="classEs5">
 		<div>
 			<h2>Імітація класів в ES 5</h2>
@@ -706,7 +789,7 @@
 		</style>
 	</section> -->
 
-	<section class="slide" id="classEs6">
+<!-- 	<section class="slide" id="classEs6">
 		<div>
 			<h2>Класи в ES 6</h2>
 			<pre>
@@ -738,7 +821,7 @@
 				font-size: 20px;
 			}
 		</style>
-	</section>
+	</section> -->
 
 	<section class="slide" id="moduleInfo">
 		<div>
