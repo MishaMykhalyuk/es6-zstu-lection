@@ -46,6 +46,9 @@
 				.slide .normalize-pre{
 					margin-bottom: 20px;
 				}
+				.slide.promises code{
+					line-height: 47px;
+				}
 
 			</style>
 		</div>
@@ -95,7 +98,7 @@
 		</div>
 	</section>
 
-	<section class="slide shout" id="9">
+	<section class="slide shout">
 		<div>
 			<h2>Що нового?</h2>
 		</div>
@@ -506,7 +509,7 @@
 				white-space: nowrap;
 			}
 		</style>
-	</sect -->ion>
+	</section>-->
 
 	<section class="slide cover">
 		<div>
@@ -621,7 +624,6 @@
 
 	<section class="slide" id="what">
 		<div>
-			<!-- <h2>Генератори</h2> -->
 			<p><i>"<b>Генератори</b> - співпрограми першого класу, що представляють із себе об'єкти, інкапсулюючі відкладені контексти виконання"</i></p>
 			<div class="what-wrapper next">
 				<img src="pictures/what.png">
@@ -706,6 +708,104 @@
 		</style>
 	</section>
 
+	<section class="slide shout">
+		<div>
+			<h2>Promises</h2>
+		</div>
+	</section>
+
+	<section class="slide"><div>
+		<h2>Callback</h2>
+		<pre>			<code class="javascript hljs">callACat(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{</code>
+			<code class="javascript hljs">	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello, Cat!'</span>);</code>
+			<code class="javascript hljs">});</code>
+		</pre>
+		</div>
+	</section>
+
+	<section class="slide promises">
+		<div>
+			<h2>Callback Hell</h2>
+			<pre>			<code class="javascript hljs">callACat(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{</code>
+				<code class="javascript hljs">	callADog(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{</code>
+				<code class="javascript hljs">		callAHorse(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{</code>
+				<code class="javascript hljs">			callSanta(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{</code>
+				<code class="javascript hljs">				<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Where am I?'</span>);</code>
+				<code class="javascript hljs">			});</code>
+				<code class="javascript hljs">		});</code>
+				<code class="javascript hljs">	});</code>
+				<code class="javascript hljs">});</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide"><div>
+		<h2>Користь від Promise</h2>
+		<pre>			
+			<code class="javascript hljs">phone.callACat()</code>
+			<code class="javascript hljs"> .then(phone.callADog)</code>
+			<code class="javascript hljs"> .then(phone.callAHorse)</code>
+			<code class="javascript hljs"> .then(phone.callSanta)</code>
+			<code class="javascript hljs"> .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{ <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Santa?'</span>); });</code>
+		</pre>
+	</div></section>
+
+	<section class="slide promises"><div>
+		<h2>Callback -&gt; Promise</h2>
+		<pre>			<code class="javascript hljs"><span class="hljs-keyword">new</span> Promise(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(fulfill, reject)</span> </span>{</code>
+			<code class="javascript hljs">	phone.callACat(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(error, result)</span> </span>{</code>
+			<code class="javascript hljs">		<span class="hljs-keyword">if</span> (error) {</code>
+			<code class="javascript hljs">			reject(error);</code>
+			<code class="javascript hljs">			<span class="hljs-keyword">return</span>;</code>
+			<code class="javascript hljs">		}</code>
+			<code class="javascript hljs">		fulfill(result);</code>
+			<code class="javascript hljs">	});</code>
+			<code class="javascript hljs">});</code>
+		</pre>
+	</div></section>
+
+	<section class="slide chaining"><div>
+		<h2>Chaining</h2>
+		<pre>			<code class="javascript hljs">phone.callACat()</code>
+			<code class="javascript hljs"> .then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(catResult)</span> </span>{</code>
+			<code class="javascript hljs">   <span class="hljs-keyword">return</span> phone.callADog(); <span class="hljs-comment">// Promise</span></code>
+			<code class="javascript hljs"> })</code>
+			<code class="javascript hljs"> .then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(dogResult)</span> </span>{</code>
+			<code class="javascript hljs">   <span class="hljs-keyword">return</span> <span class="hljs-string">'Hello, Dog!'</span>; <span class="hljs-comment">// Value</span></code>
+			<code class="javascript hljs"> })</code>
+			<code class="javascript hljs"> .then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg)</span> </span>{ </code>
+			<code><span class="hljs-built_in">   console</span>.log(msg); <span class="hljs-comment">// Hello, Dog! </span></code>
+			<code> });</code>
+		</pre>
+	</div>
+	<style>
+	.slide.chaining code{
+		line-height: 40px;
+	}
+	</style>
+	</section>
+
+	<section class="slide promises-errors"><div>
+		<h2>Обробка помилок</h2>
+		<pre>			<code class="javascript hljs">phone.callACat()</code>
+			<code class="javascript hljs"> .then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{</code>
+			<code class="javascript hljs">   <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'No cat!'</span>);</code>
+			<code class="javascript hljs"> })</code>
+			<code class="javascript hljs"> .then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{</code>
+			<code class="javascript hljs">   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'This is a cat!'</span>); <span class="hljs-comment">// skipped</span></code>
+			<code class="javascript hljs"> })</code>
+			<code class="javascript hljs"> <mark>.catch(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(reason)</span> </span>{</mark></code>
+			<code class="javascript hljs"> 	<mark><span class="hljs-built_in">console</span>.error(reason);</mark> <span class="hljs-comment">// No cat!</span></code>
+			<code class="javascript hljs"> <mark>})</mark>;</code>
+		</pre>
+	</div>
+	<style>
+	.slide.promises-errors code{
+		line-height: 42px;
+	}
+	</style>
+	</section>
+
 	<section class="slide cover">
 		<div>
 			<h2 class="white">Класи</h2>
@@ -713,7 +813,7 @@
 		</div>
 	</section>
 
-		<section class="slide" id="53">
+		<section class="slide">
 		<div>
 			<h2>Класи</h2>
 			<pre>				<code class="language-javascript">class Animal {</code>
@@ -727,11 +827,12 @@
 		</div>
 	</section>
 
-	<section class="slide" id="54">
+	<section class="slide">
 		<div>
 			<h2>Класи</h2>
 			<b>extends</b>
-			<pre>				<code class="language-javascript">class Cat extends Animal {</code>
+			<pre>				
+				<code class="language-javascript">class Cat extends Animal {</code>
 				<code>	constructor() {</code>
 				<code>		<mark>super();</mark></code>
 				<code>		this.speed = 10;</code>
@@ -741,10 +842,11 @@
 		</div>
 	</section>
 
-	<section class="slide" id="55">
+	<section class="slide">
 		<div>
 			<h2>Класи</h2>
-			<pre>				<code class="language-javascript">let dog = new Animal();</code>
+			<pre>				
+			<code class="language-javascript">let dog = new Animal();</code>
 				<code>let cat = new Cat();</code>
 				<code>console.log(dog.toString());	// sleep</code>
 				<code>console.log(cat.toString());	// play</code>
@@ -754,7 +856,7 @@
 		</div>
 	</section>
 
-	<section class="slide" id="56">
+	<section class="slide">
 		<div>
 			<h2>Класи</h2>
 			<b>static</b>
@@ -767,7 +869,7 @@
 		</div>
 	</section>
 
-	<section class="slide" id="57">
+	<section class="slide">
 		<div>
 			<h2>Класи</h2>
 			<b>get/set</b>
@@ -782,7 +884,7 @@
 		</div>
 	</section>
 
-	<section class="slide" id="58">
+	<section class="slide">
 		<div>
 			<h2>Класи</h2>
 			<b>"hoisting"</b>
