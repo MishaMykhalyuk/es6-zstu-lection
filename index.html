@@ -820,8 +820,9 @@
 				<code>	constructor() {</code>
 				<code>		this.speed = 0;</code>
 				<code>	}</code>
-				<code>toString() {</code>
-				<code>	return this.speed === 0 ? ' sleep' : ' play' }</code>
+				<code>	toString() {</code>
+				<code>		return this.speed === 0 ? ' sleep' : ' play';</code>
+				<code>	}</code>
 				<code>}</code>
 			</pre>
 		</div>
@@ -873,12 +874,12 @@
 		<div>
 			<h2>Класи</h2>
 			<b>get/set</b>
-			<pre>				<code class="language-javascript">class O {</code>
+			<pre>				<code class="language-javascript">class Util {</code>
 				<code>	constructor() {</code>
 				<code>		this.mx = 'initial';</code>
 				<code>	}</code>
-				<code><mark>get</mark> x() { return this.mx; }</code>
-				<code><mark>set</mark> x(val) { this.mx = val; }</code>
+				<code>	<mark>get</mark> x() { return this.mx; }</code>
+				<code>	<mark>set</mark> x(val) { this.mx = val; }</code>
 				<code>}</code>
 			</pre>
 		</div>
